@@ -17,13 +17,12 @@ class TestAbs(unittest.TestCase):
         link = "http://suninjuly.github.io/registration1.html";
         browser.get(link);
 
-        element_1 = browser.find_element(By.CLASS_NAME, 'form-control first');
+        element_1 = browser.find_element(By.CLASS_NAME, "first");
         element_1.send_keys("Valeriy");
-        element_2 = browser.find_element(By.CLASS_NAME, 'form-control second');
+        element_2 = browser.find_element(By.CLASS_NAME, "second");
         element_2.send_keys("Chernobrovyi");
-        element_3 = browser.find_element(By.CLASS_NAME, 'form-control third');
+        element_3 = browser.find_element(By.CLASS_NAME, "third");
         element_3.send_keys("valerasergeevich@gmail.com");
-
 
         # Отправляем заполненную форму
         button = browser.find_element(By.CSS_SELECTOR, "button.btn")
@@ -36,22 +35,29 @@ class TestAbs(unittest.TestCase):
         # находим элемент, содержащий текст
         welcome_text_elt = browser.find_element(By.TAG_NAME, "h1")
         # записываем в переменную welcome_text текст из элемента welcome_text_elt
-        welcome_text = welcome_text_elt.text
+        welcome_text_1 = welcome_text_elt.text
 
         # с помощью assert проверяем, что ожидаемый текст совпадает с текстом на странице сайта
-        assert "Congratulations! You have successfully registered!" == welcome_text;
+        #assert "Congratulations! You have successfully registered!" == welcome_text;
+        self.assertEqual(welcome_text_1, "Congratulations! You have successfully registered!", "Test 1 not Passed");
 
     def test_abs2(self):
+        # It's work in Chrome with Windows, Linux and macOS
+        options = webdriver.ChromeOptions();
+        options.add_argument("--start-maximized");
+
+        browser = webdriver.Chrome();
+        browser = webdriver.Chrome(chrome_options=options);
+    
         link = "http://suninjuly.github.io/registration2.html";
         browser.get(link);
 
-        element_1 = browser.find_element(By.CLASS_NAME, 'form-control first');
+        element_1 = browser.find_element(By.CLASS_NAME, "form-control first");
         element_1.send_keys("Valeriy");
-        element_2 = browser.find_element(By.CLASS_NAME, 'form-control second');
+        element_2 = browser.find_element(By.CLASS_NAME, "form-control second");
         element_2.send_keys("Chernobrovyi");
-        element_3 = browser.find_element(By.CLASS_NAME, 'form-control third');
+        element_3 = browser.find_element(By.CLASS_NAME, "form-control third");
         element_3.send_keys("valerasergeevich@gmail.com");
-
 
         # Отправляем заполненную форму
         button = browser.find_element(By.CSS_SELECTOR, "button.btn")
@@ -64,10 +70,11 @@ class TestAbs(unittest.TestCase):
         # находим элемент, содержащий текст
         welcome_text_elt = browser.find_element(By.TAG_NAME, "h1")
         # записываем в переменную welcome_text текст из элемента welcome_text_elt
-        welcome_text = welcome_text_elt.text
+        welcome_text_2 = welcome_text_elt.text
 
         # с помощью assert проверяем, что ожидаемый текст совпадает с текстом на странице сайта
-        assert "Congratulations! You have successfully registered!" == welcome_text;
+        #assert "Congratulations! You have successfully registered!" == welcome_text;
+        self.assertEqual(welcome_text_2, "Congratulations! You have successfully registered!", "Test 2 not Passed")
 
 if __name__ == "__main__":
     unittest.main();
