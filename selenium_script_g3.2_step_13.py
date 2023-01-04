@@ -42,13 +42,6 @@ class TestAbs(unittest.TestCase):
         assert "Congratulations! You have successfully registered!" == welcome_text;
 
     def test_abs2(self):
-        # It's work in Chrome with Windows, Linux and macOS
-        options = webdriver.ChromeOptions();
-        options.add_argument("--start-maximized");
-
-        browser = webdriver.Chrome();
-        browser = webdriver.Chrome(chrome_options=options);
-    
         link = "http://suninjuly.github.io/registration2.html";
         browser.get(link);
 
